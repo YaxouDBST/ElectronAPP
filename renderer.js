@@ -67,10 +67,10 @@ function updateBadges() {
 // ─── MISE À JOUR LABELS SELON LE MODE ────────────────────────
 function updateLabels() {
   if (vsIA) {
-    badgeXLabel.textContent  = 'Toi';
-    badgeOLabel.textContent  = 'Rachou';
-    scoreXLabel.textContent  = 'Toi (X)';
-    scoreOLabel.textContent  = 'Rachou (O)';
+    badgeXLabel.textContent  = 'Rachou';
+    badgeOLabel.textContent  = 'Yaxou';
+    scoreXLabel.textContent  = 'Rachou (X)';
+    scoreOLabel.textContent  = 'Yaxou (O)';
   } else {
     badgeXLabel.textContent  = 'Joueur 1';
     badgeOLabel.textContent  = 'Joueur 2';
@@ -288,16 +288,16 @@ function endGame(result) {
 
     if (result.winner === 'X') {
       statusEl.textContent = vsIA
-        ? "Bravo, tu as gagné ! 🎉"
+        ? "Bravo Rachou, tu as gagné ! 🎉"
         : "Bravo Joueur 1, tu as gagné ! 🎉";
-      showOverlay('🎉', 'Bravo !', vsIA ? "Tu as battu Rachou !" : "Joueur 1 remporte la manche !");
+      showOverlay('🎉', 'Bravo !', vsIA ? "Rachou a gagné ! 🎉" : "Joueur 1 remporte la manche !");
     } else {
       statusEl.textContent = vsIA
-        ? "Rachou a gagné... 😅 Essaie encore !"
+        ? "Yaxou a gagné... 😅 Essaie encore !"
         : "Bravo Joueur 2, tu as gagné ! 🎉";
       showOverlay(
         vsIA ? '🤖' : '🎉',
-        vsIA ? 'Rachou gagne !' : 'Bravo Joueur 2 !',
+        vsIA ? 'Yaxou gagne !' : 'Bravo Joueur 2 !',
         vsIA ? 'Tu feras mieux la prochaine fois ✨' : 'Joueur 2 remporte la manche !'
       );
     }
