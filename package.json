@@ -30,7 +30,10 @@
     ]
   },
   "devDependencies": {
+    "@electron/packager": "^19.0.5",
     "electron": "^29.0.0",
-    "electron-builder": "^24.13.3"
+    "electron-builder": "^24.13.3",
+    "jimp": "^1.6.0",
+    "png-to-ico": "^3.0.1"
   }
 }

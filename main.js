@@ -4,6 +4,9 @@ const path = require('path');
 // Supprime totalement la barre de menu native
 Menu.setApplicationMenu(null);
 
+// Force Windows à utiliser l'icône de l'app
+app.setAppUserModelId('com.rachou.game');
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 500,
@@ -15,7 +18,7 @@ function createWindow() {
     fullscreenable: false,
     autoHideMenuBar: true,
     title: 'Rachou',
-    icon: path.join(__dirname, 'images', 'logo.png'),
+    icon: path.join(__dirname, 'images', 'logo.ico'),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
