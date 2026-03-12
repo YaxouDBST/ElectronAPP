@@ -1,0 +1,36 @@
+{
+  "name": "rachou",
+  "version": "1.0.0",
+  "description": "Rachou - Le Jeu de Morpion Kawaii",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "com.rachou.game",
+    "productName": "Rachou",
+    "win": {
+      "target": "nsis",
+      "icon": "images/logo.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "installerIcon": "images/logo.png",
+      "uninstallerIcon": "images/logo.png",
+      "shortcutName": "Rachou"
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist/**",
+      "!node_modules/.cache/**"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}
