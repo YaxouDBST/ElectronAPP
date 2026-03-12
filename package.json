@@ -1,7 +1,7 @@
 {
   "name": "rachou",
   "version": "1.0.0",
-  "description": "Rachou - Le Jeu de Morpion Kawaii",
+  "description": "Rachou - Un jeu fait par Yaxou pour Rachou",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -12,13 +12,18 @@
     "productName": "Rachou",
     "win": {
       "target": "nsis",
-      "icon": "images/logo.png"
+      "icon": "images/logo.ico",
+      "sign": null,
+      "signingHashAlgorithms": null
     },
     "nsis": {
-      "oneClick": true,
-      "installerIcon": "images/logo.png",
-      "uninstallerIcon": "images/logo.png",
-      "shortcutName": "Rachou"
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "images/logo.ico",
+      "uninstallerIcon": "images/logo.ico",
+      "shortcutName": "Rachou",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
     },
     "directories": {
       "output": "dist"
