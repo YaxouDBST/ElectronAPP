@@ -225,6 +225,48 @@ function disableAllCells(disable) {
   });
 }
 
+// ─── LIGNE GAGNANTE SVG ────────────────────────────────────
+function drawWinLine(line) {
+  const svg = document.getElementById('win-line-svg');
+  svg.innerHTML = '';
+
+  const PAD  = 12;   // padding du grid-wrapper
+  const CELL = 110;  // taille d'une cellule
+  const GAP  = 8;    // gap entre cellules
+
+  function cellCenter(idx) {
+    const row = Math.floor(idx / 3);
+    const col = idx % 3;
+    return {
+      x: PAD + col * (CELL + GAP) + CELL / 2,
+      y: PAD + row * (CELL + GAP) + CELL / 2
+    };
+  }
+
+  const start  = cellCenter(line[0]);
+  const end    = cellCenter(line[2]);
+  const length = Math.hypot(end.x - start.x, end.y - start.y);
+
+  const lineEl = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  lineEl.setAttribute('x1', start.x);
+  lineEl.setAttribute('y1', start.y);
+  lineEl.setAttribute('x2', end.x);
+  lineEl.setAttribute('y2', end.y);
+  lineEl.classList.add('win-line');
+  lineEl.style.strokeDasharray  = length;
+  lineEl.style.strokeDashoffset = length;
+
+  svg.appendChild(lineEl);
+  // Force reflow pour déclencher la transition CSS
+  lineEl.getBoundingClientRect();
+  lineEl.style.strokeDashoffset = 0;
+}
+
+function clearWinLine() {
+  const svg = document.getElementById('win-line-svg');
+  if (svg) svg.innerHTML = '';
+}
+
 // ─── FIN DE PARTIE ───────────────────────────────────────────
 function endGame(result) {
   gameOver = true;
@@ -239,6 +281,7 @@ function endGame(result) {
   } else {
     // Victoire
     result.line.forEach(i => cells[i].classList.add('winner'));
+    drawWinLine(result.line);
     scores[result.winner]++;
     scoreXEl.textContent = scores.X;
     scoreOEl.textContent = scores.O;
@@ -280,6 +323,7 @@ function resetGame() {
   gameOver      = false;
   aiThinking    = false;
 
+  clearWinLine();
   cells.forEach(cell => {
     cell.classList.remove('taken', 'disabled', 'winner');
     cell.querySelector('.img-x').classList.remove('visible');

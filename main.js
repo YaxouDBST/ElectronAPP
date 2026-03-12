@@ -6,10 +6,12 @@ Menu.setApplicationMenu(null);
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 600,
-    height: 800,
-    resizable: false,
-    maximizable: false,
+    width: 500,
+    height: 650,
+    resizable: true,
+    minWidth: 420,
+    minHeight: 600,
+    maximizable: true,
     fullscreenable: false,
     autoHideMenuBar: true,
     title: 'Rachou',
