@@ -1,7 +1,3 @@
-/* =========================================================
-   renderer.js — Rachou | Morpion Kawaii 🌸
-   Logique de jeu + IA Minimax imbattable
-   ========================================================= */
 
 // ─── ÉTAT DU JEU ───────────────────────────────────────────
 let board        = Array(9).fill(null); // null | 'X' | 'O'
@@ -49,7 +45,7 @@ function getStatusText() {
   } else {
     return vsIA
       ? '<span class="thinking-dots">Rachou réfléchit <span></span><span></span><span></span></span>'
-      : "C'est au tour de Joueur O ! 💜";
+      : "C'est au tour de Joueur O ! ❤️";
   }
 }
 
@@ -296,7 +292,7 @@ function endGame(result) {
         ? "Yaxou a gagné... 😅 Essaie encore !"
         : "Bravo Joueur 2, tu as gagné ! 🎉";
       showOverlay(
-        vsIA ? '🤖' : '🎉',
+        vsIA ? '😐' : '🎉',
         vsIA ? 'Yaxou gagne !' : 'Bravo Joueur 2 !',
         vsIA ? 'Tu feras mieux la prochaine fois ✨' : 'Joueur 2 remporte la manche !'
       );
